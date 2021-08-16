@@ -1,0 +1,5 @@
+.individual-card:hover{
+  opacity: 0.9;
+  transform: scale(1.05);
+  transition: all .2s ease-in-out;
+}
