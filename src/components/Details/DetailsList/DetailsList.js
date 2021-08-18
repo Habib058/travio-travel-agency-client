@@ -3,7 +3,7 @@ import './DetailsList.css'
 
 const DetailsList = ({ info }) => {
     return (
-        <div className='col-md-3 mt-5'>
+        <div className='col-md-3 mt-5 mb-5'>
             <div className="card shadow-sm ">
             <div className="card-body">
                 <img className='individual-card img-fluid' src={info.img} alt="" />

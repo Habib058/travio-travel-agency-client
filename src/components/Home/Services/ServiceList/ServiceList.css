@@ -1,0 +1,8 @@
+.image:hover{
+    opacity: 0.9;
+    transform: scale(1.05);
+    transition: all .5s ease-in-out;
+}
+.heading{
+    color: #061a3a;
+}
