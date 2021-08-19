@@ -10,6 +10,7 @@ import Home from './components/Home/Home/Home';
 import Destination from './components/Destination/Destination/Destination';
 import AboutUs from './components/About/About/AboutUs';
 import Tours from './components/Tours/Tours/Tours';
+import SignUp from './components/SignUp/SignUp'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         </Route>
         <Route path='/about'><AboutUs/></Route>
         <Route path='/tours'><Tours/></Route>
+        <Route path='/signup'><SignUp/></Route>
       </Switch>
     </Router>
   );
