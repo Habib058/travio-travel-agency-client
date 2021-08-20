@@ -5,11 +5,13 @@ import {FaBars} from 'react-icons/fa'
 import { Button } from '../../../button';
 import logo from '../../../../assets/images/logo.png'
 
-const Navbar = () => {
+const Navbar = ({toggle}) => {
     return (
         <Nav>
-            <NavLink to='/'><img style={{height:'40px'}} src={logo} alt="" /></NavLink>
+            <NavLink to='/'><h1 className='px-5'>TRAVIO</h1></NavLink>
+            <MobileIcon onClick={toggle}>
             <Bars/>
+            </MobileIcon>
             <NavMenu>
                 <NavLink to='about'>About</NavLink>
                 <NavLink to='destination'>Destinations</NavLink>
@@ -18,7 +20,7 @@ const Navbar = () => {
                 <NavLink to='admin'>Admin</NavLink>
                 
             </NavMenu>
-            <NavBtn><Button>Login</Button></NavBtn>
+            <NavBtn className='px-5'><Button>Login</Button></NavBtn>
         </Nav>
     );
 };
@@ -43,7 +45,13 @@ padding: 0 1rem;
 height: 100%;
 font-size: 20px;
 cursor: pointer;
+:hover{
+    color: #fff;
+}
 
+`
+const MobileIcon = styled.div`
+display: block;
 `
 const Bars = styled(FaBars)`
 display: none;
@@ -72,7 +80,6 @@ margin-right: -48px;
 const NavBtn = styled.div`
 display: flex;
 align-items: center;
-margin-right: 24px;
 
 @media screen and (max-width:768px){
     display: none;

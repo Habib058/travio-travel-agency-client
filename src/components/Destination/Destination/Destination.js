@@ -7,14 +7,21 @@ import './Destination.css'
 import { servicesData } from '../../Home/Services/Services/Services';
 import IndividualDestination from '../IndividualDestination/IndividualDestination';
 import Footer from '../../Home/Footer/Footer';
+import MenuButton from '../../Home/Header/MenuButton/MenuButton';
+import { useState } from 'react';
 
 const Destination = () => {
+    const [isOpen,setIsOpen] = useState(false);
+    const toggle = ()=>{
+        setIsOpen(!isOpen)
+    }
     return (
         <div>
             <div>
 
                 <div className='background'>
-                    <Navbar></Navbar>
+                    <MenuButton isOpen={isOpen} toggle={toggle}></MenuButton>
+                    <Navbar toggle={toggle}></Navbar>
                     <div className='container text-center mt-5 pt-5'>
                         <h1 className='header'>WELCOME TO OUR POPULAR DESTINATIONS</h1>
                     </div>

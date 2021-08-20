@@ -27,3 +27,13 @@
     color:#ff7c5b ;
     font-weight: 600;
 }
+.google h4{
+    text-decoration: none;
+}
+.iconSize{
+    font-size: 50px;
+}
+.google:hover{
+    background-color: #ff7c5b;
+    transition: all .5s ease-in-out
+}

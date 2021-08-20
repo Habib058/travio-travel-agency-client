@@ -4,6 +4,8 @@ import './Tours.css';
 import IndividualTour from '../IndividualTour/IndividualTour';
 import img from '../../../assets/images/travel1.jpg'
 import Footer from '../../Home/Footer/Footer';
+import MenuButton from '../../Home/Header/MenuButton/MenuButton';
+import { useState } from 'react';
 const servicesData = [
     {
         id:'1',
@@ -35,10 +37,15 @@ const servicesData = [
 ]
 
 const Tours = () => {
+    const [isOpen,setIsOpen] = useState(false);
+    const toggle = ()=>{
+        setIsOpen(!isOpen)
+    }
     return (
         <div>
             <div className='tour-bg'>
-                <Navbar />
+                <MenuButton isOpen={isOpen} toggle={toggle}></MenuButton>
+                <Navbar toggle={toggle}/>
                 <div className='mt-5 text-center'>
                     <h1>WELCOME TO OUR SUCCESSFUL TOUR</h1>
                 </div>
