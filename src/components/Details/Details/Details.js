@@ -39,7 +39,7 @@ const Details = () => {
                 <h1 style={{ color: '#061a3a' }}>Why Travel With TRAVIO?</h1>
             </div>
             <div className='container '>
-            <div className='card-deck row mt-5 pt-5 '>
+            <div className='card-deck row mt-5 '>
                 {
                     detailsData.map(info => <DetailsList info={info}></DetailsList>)
                 }

@@ -11,6 +11,9 @@ import Destination from './components/Destination/Destination/Destination';
 import AboutUs from './components/About/About/AboutUs';
 import Tours from './components/Tours/Tours/Tours';
 import SignUp from './components/SignUp/SignUp'
+import Admin from './components/DashBoard/Admin/Admin/Admin';
+import Users from './components/DashBoard/Admin/Users/Users/Users';
+import AddAdmin from './components/DashBoard/Admin/AddAdmin/AddAdmin/AddAdmin';
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
         <Route path='/about'><AboutUs/></Route>
         <Route path='/tours'><Tours/></Route>
         <Route path='/signup'><SignUp/></Route>
+        <Route exact path='/admin'><Admin/></Route>
+        <Route path = '/users'><Users/></Route>
+        <Route path = '/addAdmin'><AddAdmin/></Route>
       </Switch>
     </Router>
   );
