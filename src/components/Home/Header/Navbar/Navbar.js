@@ -4,8 +4,11 @@ import styled from 'styled-components';
 import {FaBars} from 'react-icons/fa'
 import { Button } from '../../../button';
 import logo from '../../../../assets/images/logo.png'
+import { useContext } from 'react';
+import { UserContext } from '../../../../App';
 
 const Navbar = ({toggle}) => {
+    const [loggedInUser,setLoggedInUser] = useContext(UserContext)
     return (
         <Nav>
             <NavLink to='/'><h1 className='px-5'>TRAVIO</h1></NavLink>
@@ -13,14 +16,16 @@ const Navbar = ({toggle}) => {
             <Bars/>
             </MobileIcon>
             <NavMenu>
-                <NavLink to='about'>About</NavLink>
-                <NavLink to='destination'>Destinations</NavLink>
-                <NavLink to='tours'>Tours</NavLink>
-                <NavLink to='blog'>Blog</NavLink>
-                <NavLink to='admin'>Admin</NavLink>
+                <NavLink to='/about'>About</NavLink>
+                <NavLink to='/destination'>Destinations</NavLink>
+                <NavLink to='/tours'>Tours</NavLink>
+                <NavLink to='/blog'>Blog</NavLink>
+                <NavLink to='/admin'>Admin</NavLink>
                 
             </NavMenu>
-            <NavBtn className='px-5'><Button>Login</Button></NavBtn>
+            <NavBtn className='px-5'><Link>{
+                loggedInUser?<img style={{width:'32px',height:'32px',borderRadius:'50%'}} src={loggedInUser.img} alt="" />:<button>Login</button>
+            }</Link></NavBtn>
         </Nav>
     );
 };

@@ -17,6 +17,9 @@ import AddAdmin from './components/DashBoard/Admin/AddAdmin/AddAdmin/AddAdmin';
 import { createContext } from 'react';
 import { useState } from 'react';
 import PrivateRoute from './components/SignUp/PrivateRoute';
+import AddTour from './components/DashBoard/Admin/AddTour/AddTour/AddTour';
+import Checkout from './components/Cheackout/Checkout'
+import Orders from './components/DashBoard/Admin/Orders/Orders/Orders';
 
 export const UserContext = createContext();
 function App() {
@@ -37,6 +40,9 @@ function App() {
           <PrivateRoute exact path='/admin'><Admin /></PrivateRoute>
           <Route path='/users'><Users /></Route>
           <Route path='/addAdmin'><AddAdmin /></Route>
+          <Route path='/addTour'><AddTour/></Route>
+          <Route path='/checkout/:id'><Checkout></Checkout></Route>
+          <Route path ='/orders'><Orders/></Route>
         </Switch>
       </Router>
     </UserContext.Provider>

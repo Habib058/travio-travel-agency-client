@@ -2,6 +2,8 @@ import React from 'react';
 import sundarban from '../../../../assets/images/sundarban (1).jpg';
 import sundarban1 from '../../../../assets/images/alone.jpeg';
 import ServiceList from '../ServiceList/ServiceList';
+import { useState } from 'react';
+import { useEffect } from 'react';
 export const servicesData = [
     {
         id:'1',
@@ -33,6 +35,12 @@ export const servicesData = [
 ]
 
 const Services = () => {
+    const [tours,setTours] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/tours')
+        .then(res=>res.json())
+        .then(data=>setTours(data))
+    },[])
     return (
         <section>
             <div className='container mt-5 pt-5'>
@@ -43,7 +51,7 @@ const Services = () => {
                 <div className='d-flex justify-content-center mt-5'>
                     <div className='row card-deck'>
                         {
-                            servicesData.map(service=><ServiceList service={service} key={service.id}></ServiceList>)
+                            tours.map(service=><ServiceList service={service} key={service._id}></ServiceList>)
                         }
 
                     </div>

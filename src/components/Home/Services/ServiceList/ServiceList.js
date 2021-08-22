@@ -3,16 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons'
 import './ServiceList.css'
+import { Link } from 'react-router-dom';
 
 const ServiceList = ({ service }) => {
     return (
-        <div className='col-md-4'>
+        <div className='col-md-4 mt-5'>
             <div className='card shadow-lg border'>
                 <div className="card-body">
-                    <img src={service.img} alt="" className="img-fluid image" />
+                    <img style={{height:'300px'}} src={service.imgUrl} alt="" className="img-fluid image" />
                 </div>
                 <div className='mt-2 mx-3 heading'>
-                    <h4><b>{service.heading}</b></h4>
+                    <h4><b>{service.tourName}</b></h4>
                 </div>
                 <div className='mx-3 text-secondary'>
                 <p><b><span style={{color:'orange'}}>$ {service.price}</span></b> / <b>person</b></p>
@@ -25,10 +26,10 @@ const ServiceList = ({ service }) => {
                 </div>
 
                 <div className='mt-3 px-3'>
-                    <p className='text-secondary text-center'>{service.pera}</p>
+                    <p className='text-secondary text-center'>{service.description}</p>
                 </div>
                 <div className='px-3 mb-3'>
-                    <button className="btn btn-primary">See Details</button>
+                    <Link to = {`/checkout/${service._id}`}><button className="btn btn-primary">Book Now</button></Link>
                 </div>
 
             </div>
