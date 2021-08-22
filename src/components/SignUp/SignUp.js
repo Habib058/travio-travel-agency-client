@@ -1,17 +1,57 @@
 import React from 'react';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Footer from '../Home/Footer/Footer';
 import Navbar from '../Home/Header/Navbar/Navbar';
 import './SignUp.css';
-import {faGooglePlusG } from '@fortawesome/free-brands-svg-icons';
+import { faGooglePlusG } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import firebase from "firebase/app";
+import "firebase/auth";
+import { useContext } from 'react';
+import { UserContext } from '../../App';
+import firebaseConfig from './firebase.config';
 
 const SignUp = () => {
     const [newUser, setNewUser] = useState()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
+
+    ///googleSignIn
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
+
+    if (firebase.apps.length === 0) {
+        firebase.initializeApp(firebaseConfig);
+    }
+
+    const handleGoogleSignIn = () => {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+            .then(function (result) {
+                console.log(result)
+                const { displayName, email,photoURL } = result.user;
+                const signedInUser = { name: displayName, email,img:photoURL }
+                setLoggedInUser(signedInUser);
+                storeAuthToken();
+            }).catch(function (error) {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
+
+    const storeAuthToken = () => {
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+            .then(function (idToken) {
+                sessionStorage.setItem('token', idToken);
+                history.replace(from);
+            }).catch(function (error) {
+                // Handle error
+            });
+    }
     return (
         <section>
             <div className='signUp-bg'>
@@ -59,12 +99,12 @@ const SignUp = () => {
                         </div>
                     </div>
                 </div>
-                <Link>
+                <Link onClick={handleGoogleSignIn}>
                     <div className='mt-5'>
                         <div className='mx-5  shadow-lg '>
                             <div className='container google border rounded-pill  col-md-4'>
                                 <div className='d-flex align-items-center justify-content-center'>
-                                <li className="list-inline-item"><a href="//google.com"><FontAwesomeIcon className="icon iconSize" icon={faGooglePlusG} /></a></li>
+                                    <li className="list-inline-item"><a href="//google.com"><FontAwesomeIcon className="icon iconSize" icon={faGooglePlusG} /></a></li>
                                     <h4 className='text-center my-3 px-3' style={{ color: 'white' }}>Sign In With Google</h4>
                                 </div>
                             </div>

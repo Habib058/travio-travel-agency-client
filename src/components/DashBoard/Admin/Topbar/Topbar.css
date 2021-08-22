@@ -5,6 +5,9 @@
     top: 0;
     z-index: 999;
 }
+.logoLink{
+    text-decoration: none;
+}
 .topBarWrapper{
     height: 100%;
     padding: 0px 20px;

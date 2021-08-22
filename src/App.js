@@ -14,25 +14,32 @@ import SignUp from './components/SignUp/SignUp'
 import Admin from './components/DashBoard/Admin/Admin/Admin';
 import Users from './components/DashBoard/Admin/Users/Users/Users';
 import AddAdmin from './components/DashBoard/Admin/AddAdmin/AddAdmin/AddAdmin';
+import { createContext } from 'react';
+import { useState } from 'react';
+import PrivateRoute from './components/SignUp/PrivateRoute';
 
+export const UserContext = createContext();
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/'>
-          <Home/>
-        </Route>
-        <Route path='/destination'>
-          <Destination/>
-        </Route>
-        <Route path='/about'><AboutUs/></Route>
-        <Route path='/tours'><Tours/></Route>
-        <Route path='/signup'><SignUp/></Route>
-        <Route exact path='/admin'><Admin/></Route>
-        <Route path = '/users'><Users/></Route>
-        <Route path = '/addAdmin'><AddAdmin/></Route>
-      </Switch>
-    </Router>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path='/destination'>
+            <Destination />
+          </Route>
+          <Route path='/about'><AboutUs /></Route>
+          <Route path='/tours'><Tours /></Route>
+          <Route path='/signup'><SignUp /></Route>
+          <PrivateRoute exact path='/admin'><Admin /></PrivateRoute>
+          <Route path='/users'><Users /></Route>
+          <Route path='/addAdmin'><AddAdmin /></Route>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
