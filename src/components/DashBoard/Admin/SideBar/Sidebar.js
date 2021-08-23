@@ -1,13 +1,35 @@
 import React from 'react';
 import { LineStyle, GroupAdd, FlightTakeoff, Group,ShoppingCart } from '@material-ui/icons';
 import './SideBar.css'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../../../App';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Sidebar = () => {
+    const [loggedInUser,setLoggedInUser] = useContext(UserContext);
+    const [isAdmin,setIsAdmin] = useState(false);
+    const history = useHistory()
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/isAdmin', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({email:loggedInUser.email})
+        })
+            .then(res => res.json())
+            .then(data =>setIsAdmin(data))
+    },[])
+    console.log(isAdmin)
     return (
         <div className='sideBar'>
             <div className="sideBarWrapper">
-                <div className="sideBarMenu">
+                {
+                    isAdmin && 
+                    <div className="sideBarMenu">
                     <h3 className="sideBarTitle">Admin</h3>
                     <ul className="sideBarList ">
                         <Link to='/admin' className='link'>
@@ -41,6 +63,7 @@ const Sidebar = () => {
                             </li></Link>
                     </ul>
                 </div>
+                }
                 <div className="sideBarMenu">
                     <h3 className="sideBarTitle">User</h3>
                     <ul className="sideBarList ">

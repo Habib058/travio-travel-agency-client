@@ -1,6 +1,5 @@
 import React from 'react';
 import { useContext } from 'react';
-import jwt_decode from "jwt-decode";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { UserContext } from '../../../../../App';
@@ -9,7 +8,7 @@ import './UserOrderByEmail.css'
 
 
 const UserOrderByEmail = () => {
-    
+
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [orders, setOrders] = useState([])
     useEffect(() => {
@@ -28,7 +27,7 @@ const UserOrderByEmail = () => {
             <div className="mainContent">
                 <h1 className='text-center text-secondary'>Your Order</h1>
                 <div>
-                    <UserOrderByEmailList orders={orders}/>
+                <UserOrderByEmailList orders={orders}/>
                 </div>
             </div>
         </div>

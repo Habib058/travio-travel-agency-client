@@ -21,6 +21,8 @@ import AddTour from './components/DashBoard/Admin/AddTour/AddTour/AddTour';
 import Checkout from './components/Cheackout/Checkout'
 import Orders from './components/DashBoard/Admin/Orders/Orders/Orders';
 import UserOrder from './components/DashBoard/Admin/UserOrder/UserOrder/UserOrder';
+import UserReview from './components/DashBoard/UserReview/UserReview/UserReview';
+import DashBoard from './components/DashBoard/DashBoard/DashBoard';
 
 export const UserContext = createContext();
 function App() {
@@ -38,13 +40,15 @@ function App() {
           <Route path='/about'><AboutUs /></Route>
           <Route path='/tours'><Tours /></Route>
           <Route path='/signup'><SignUp /></Route>
-          <PrivateRoute exact path='/admin'><Admin /></PrivateRoute>
-          <Route path='/users'><Users /></Route>
-          <Route path='/addAdmin'><AddAdmin /></Route>
-          <Route path='/addTour'><AddTour/></Route>
-          <Route path='/checkout/:id'><Checkout></Checkout></Route>
-          <Route path ='/orders'><Orders/></Route>
-          <Route path='/userOrder'><UserOrder/></Route>
+          <PrivateRoute path = '/dashBoard'><DashBoard/></PrivateRoute>
+          <PrivateRoute path='/admin'><Admin /></PrivateRoute>
+          <PrivateRoute path='/users'><Users /></PrivateRoute>
+          <PrivateRoute path='/addAdmin'><AddAdmin /></PrivateRoute>
+          <PrivateRoute path='/addTour'><AddTour/></PrivateRoute>
+          <PrivateRoute path='/checkout/:id'><Checkout></Checkout></PrivateRoute>
+          <PrivateRoute path ='/orders'><Orders/></PrivateRoute>
+          <PrivateRoute path='/userOrder'><UserOrder/></PrivateRoute>
+          <PrivateRoute path='/addReview'><UserReview/></PrivateRoute>
         </Switch>
       </Router>
     </UserContext.Provider>

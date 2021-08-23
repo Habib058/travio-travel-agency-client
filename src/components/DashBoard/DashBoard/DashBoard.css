@@ -1,0 +1,6 @@
+.dashboardContent{
+    display: flex;
+}
+.mainContent{
+    flex: 5;
+}

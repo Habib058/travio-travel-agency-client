@@ -1,16 +1,33 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import './AddAdminForm.css'
 
 const AddAdminForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const history = useHistory()
     const onSubmit = data => {
         console.log(data);
+        const adminDetails = {
+            adminName: data.name,
+            adminEmail:data.email,
+            adminPhone:data.phone,
+            adminAddress:data.address
+        };
+        fetch('http://localhost:5000/addAdmin', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(adminDetails)
+        })
+            .then(res => res.json())
+            .then(result=>{
+                alert('Admin Added Successfully');
+                history.replace("/addAdmin")
+            })
 
     };
-    const handleChange = () => {
-
-    }
     return (
         <div className='addAdmin '>
             <div className="container col-md-8">
@@ -20,7 +37,6 @@ const AddAdminForm = () => {
                     <input className='form-control' name='email' placeholder='Admin Email' {...register("email")} /> <br />
                     <input className='form-control' name='phone' placeholder='Admin Phone number' {...register("phone")} /> <br />
                     <input className='form-control' name='address' placeholder='Admin Address' {...register("address")} /> <br />
-                    <input className='form-control' type='file' /> <br />
                     <input className='form-control button' type="submit" />
                 </form>
             </div>

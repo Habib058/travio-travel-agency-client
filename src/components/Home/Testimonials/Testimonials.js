@@ -4,6 +4,8 @@ import x from '../../../assets/images/Ellipse 1.png'
 import y from '../../../assets/images/Ellipse 2.png'
 import z from '../../../assets/images/Ellipse 3.png'
 import Testimonial from '../Testimonial/Testimonial';
+import { useState } from 'react';
+import { useEffect } from 'react';
 const testimonialData = [
     {
         quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo! ',
@@ -26,6 +28,12 @@ const testimonialData = [
 ]
 
 const Testimonials = () => {
+    const [review,setReview] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/review')
+        .then(res=>res.json())
+        .then(data=>setReview(data))
+    },[])
     return (
         <section className="testimonials my-5 py-5">
             <div className="container">
@@ -36,7 +44,7 @@ const Testimonials = () => {
                 <div className='d-flex justify-content-center'>
                     <div className="card-deck mt-5 row">
                         {
-                            testimonialData.map(testimonial => <Testimonial testimonial={testimonial} key={testimonial.name} />)
+                            review.map(testimonial => <Testimonial testimonial={testimonial} key={testimonial.name} />)
                         }
                     </div>
                 </div>

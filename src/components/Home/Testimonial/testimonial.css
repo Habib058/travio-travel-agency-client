@@ -2,3 +2,8 @@
     opacity: 0.9;
   transform: scale(1.1)
 }
+.imgStyle{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
