@@ -20,6 +20,7 @@ import PrivateRoute from './components/SignUp/PrivateRoute';
 import AddTour from './components/DashBoard/Admin/AddTour/AddTour/AddTour';
 import Checkout from './components/Cheackout/Checkout'
 import Orders from './components/DashBoard/Admin/Orders/Orders/Orders';
+import UserOrder from './components/DashBoard/Admin/UserOrder/UserOrder/UserOrder';
 
 export const UserContext = createContext();
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path='/addTour'><AddTour/></Route>
           <Route path='/checkout/:id'><Checkout></Checkout></Route>
           <Route path ='/orders'><Orders/></Route>
+          <Route path='/userOrder'><UserOrder/></Route>
         </Switch>
       </Router>
     </UserContext.Provider>

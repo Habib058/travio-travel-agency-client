@@ -8,7 +8,7 @@ const Sidebar = () => {
         <div className='sideBar'>
             <div className="sideBarWrapper">
                 <div className="sideBarMenu">
-                    <h3 className="sideBarTitle">Dashboard</h3>
+                    <h3 className="sideBarTitle">Admin</h3>
                     <ul className="sideBarList ">
                         <Link to='/admin' className='link'>
                             <li className="sideBarListItem">
@@ -39,6 +39,24 @@ const Sidebar = () => {
                                 <Group className='sideBarIcon' />
                                 Users
                             </li></Link>
+                    </ul>
+                </div>
+                <div className="sideBarMenu">
+                    <h3 className="sideBarTitle">User</h3>
+                    <ul className="sideBarList ">
+                        <Link to='/userOrder' className='link'>
+                            <li className="sideBarListItem">
+                                <LineStyle className='sideBarIcon' />
+                                Orders
+                            </li>
+                        </Link>
+                        <Link to='/addReview' className='link'>
+                            <li className="sideBarListItem">
+                                <GroupAdd className='sideBarIcon' />
+                                Add Review
+                            </li>
+                        </Link>
+                        
                     </ul>
                 </div>
             </div>
