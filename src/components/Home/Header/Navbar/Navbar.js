@@ -23,9 +23,9 @@ const Navbar = ({toggle}) => {
                 <NavLink to='/dashBoard'>DashBoard</NavLink>
                 
             </NavMenu>
-            <NavBtn className='px-5'><Link>{
-                loggedInUser?<img style={{width:'32px',height:'32px',borderRadius:'50%'}} src={loggedInUser.img} alt="" />:<button>Login</button>
-            }</Link></NavBtn>
+            <NavBtn className='px-5'>{
+                loggedInUser.email?<img style={{width:'32px',height:'32px',borderRadius:'50%'}} src={loggedInUser.img} alt="" />:<Link to='signup'><button className='btn btn-primary'>Login</button></Link>
+            }</NavBtn>
         </Nav>
     );
 };

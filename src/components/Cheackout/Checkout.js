@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import './Checkout.css'
 import { LocationOn } from '@material-ui/icons';
 import { useForm } from 'react-hook-form';
@@ -10,6 +10,7 @@ import Navbar from '../Home/Header/Navbar/Navbar';
 const Checkout = () => {
     const { id } = useParams();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const history = useHistory()
     
 
 
@@ -35,7 +36,8 @@ const Checkout = () => {
         })
         .then(res=>res.json())
         .then(success=> {
-            alert('Tour Confirmed successfully')
+            alert('Tour Confirmed successfully');
+            history.replace('/');
         })
         console.log(data); 
 

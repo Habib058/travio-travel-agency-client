@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button } from '../../../button';
 import video from '../../../../assets/videos/travel2.mp4'
+import { Link } from 'react-router-dom';
 
 const HeaderMain = () => {
     return (
@@ -13,7 +14,7 @@ const HeaderMain = () => {
                 <TravelMainItems>
                     <HeaderMainH1>Welcome To Our Page</HeaderMainH1>
                     <HeaderMainP>Lets build something</HeaderMainP>
-                    <Button className='p-3'>Travel Now</Button>
+                    <Link to='/destination'><button className='btn btn-primary'>Travel Now</button></Link>
                 </TravelMainItems>
 
             </HeaderMainContent>

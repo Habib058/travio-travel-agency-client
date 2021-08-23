@@ -9,12 +9,20 @@ import IndividualDestination from '../IndividualDestination/IndividualDestinatio
 import Footer from '../../Home/Footer/Footer';
 import MenuButton from '../../Home/Header/MenuButton/MenuButton';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Destination = () => {
     const [isOpen,setIsOpen] = useState(false);
+    const [tours,setTours] = useState([])
     const toggle = ()=>{
         setIsOpen(!isOpen)
     }
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/tours')
+        .then(res=>res.json())
+        .then(data=>setTours(data))
+    },[])
     return (
         <div>
             <div>
@@ -34,7 +42,7 @@ const Destination = () => {
                     <div className='d-flex justify-content-center mt-5'>
                         <div className='row card-deck'>
                             {
-                                servicesData.map(destination => <IndividualDestination key={destination.id}
+                                tours.map(destination => <IndividualDestination key={destination._id}
                                     destination={destination}
                                 >
 
