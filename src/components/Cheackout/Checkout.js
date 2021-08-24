@@ -7,6 +7,8 @@ import { LocationOn } from '@material-ui/icons';
 import { useForm } from 'react-hook-form';
 import Navbar from '../Home/Header/Navbar/Navbar';
 import MenuButton from '../Home/Header/MenuButton/MenuButton';
+import ProcessPayment from '../ProcessPayment/ProcessPayment';
+import Footer from '../Home/Footer/Footer';
 
 const Checkout = () => {
     const { id } = useParams();
@@ -16,6 +18,7 @@ const Checkout = () => {
 
 
     const [tours, setTours] = useState([]);
+    const [shippingData,setShippingData] = useState(null)
 
     useEffect(() => {
         fetch(`https://nameless-shelf-72210.herokuapp.com/tour/${id}`)
@@ -23,27 +26,33 @@ const Checkout = () => {
             .then(data => setTours(data))
     }, [id]);
 
-    const onSubmit = data => {
+    const onSubmit = doc => {
             
-        data.id = tours._id;
-        data.tourName = tours.tourName;
-        data.price = tours.price;
-        data.location = tours.location;
-        data.createOrder = new Date();
+        setShippingData(doc);
+        console.log(doc); 
+
+
+    };
+
+    const handlePayment = (paymentId)=>{
+        shippingData.id = tours._id;
+        shippingData.tourName = tours.tourName;
+        shippingData.price = tours.price;
+        shippingData.location = tours.location;
+        shippingData.paymentId = paymentId;
+        shippingData.createOrder = new Date();
         fetch('https://nameless-shelf-72210.herokuapp.com/placeOrder',{
             method:'POST',
             headers:{'content-type':'application/json'},
-            body:JSON.stringify(data)
+            body:JSON.stringify(shippingData)
         })
         .then(res=>res.json())
         .then(success=> {
             alert('Tour Confirmed successfully');
             history.replace('/dashboard');
         })
-        console.log(data); 
 
-
-    };
+    }
     console.log(tours);
     const background = {
         backgroundImage: `url(${tours.imgUrl})`,
@@ -64,32 +73,14 @@ const Checkout = () => {
             </div>
             <div className='row mt-5'>
                 <h1 className='text-center'>Confirm Here</h1>
-                <div className="col-md-6 border-end">
-                    {/* <div className="mt-5 ">
-                        <h3 className='text-center'>Details Of This Tour</h3>
-                        <div className='d-flex justify-content-center mt-3'>
-                            <img className='img-fluid' src={tours.imgUrl} alt="" />
-                        </div>
-                        <div className='pt-3 mx-5 px-5'>
-                            <h4 className='text-center'><LocationOn /> Locations</h4>
-                            <ol>
-                                <li>
-                                    <b>{tours.location}</b>
-                                </li>
-                            </ol>
-                        </div>
-                        <div>
-                            <h4 className='text-center'>Cost : {tours.price} / Person</h4>
-                        </div>
-
-                        <div className='d-flex justify-content-center mt-3'>
-                            <Link><button className='btn btn-primary '>Confirm</button></Link>
-                        </div>
-
-                    </div> */}
+                <div style={{display:shippingData?'block':'none'}} className="col-md-6 border-end">
+                    <div className='col-md-6'>
+                        <h3>Please Pay First</h3>
+                        <ProcessPayment handlePayment={handlePayment}/>
+                    </div>
                 </div>
                 <div className='col-md-6'>
-                    <div className="container col-md-8">
+                    <div style={{display:shippingData?'none':'block'}} className="container col-md-8">
                         <h2 className="m-5 text-center">Give Your Information</h2>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <input className='form-control' name='name' placeholder='Your Name' {...register("userName")} /> <br />
@@ -101,6 +92,7 @@ const Checkout = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </section>
     );
 };

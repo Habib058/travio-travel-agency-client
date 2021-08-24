@@ -3,7 +3,7 @@
 node_modules
 /.pnp
 .pnp.js
-/src/components/SignUp/firebase.config.js
+/src/components/SignUp/firebase.config.js/
 
 
 # testing
