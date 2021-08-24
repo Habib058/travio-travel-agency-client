@@ -6,6 +6,7 @@ import './Checkout.css'
 import { LocationOn } from '@material-ui/icons';
 import { useForm } from 'react-hook-form';
 import Navbar from '../Home/Header/Navbar/Navbar';
+import MenuButton from '../Home/Header/MenuButton/MenuButton';
 
 const Checkout = () => {
     const { id } = useParams();
@@ -37,7 +38,7 @@ const Checkout = () => {
         .then(res=>res.json())
         .then(success=> {
             alert('Tour Confirmed successfully');
-            history.replace('/');
+            history.replace('/dashboard');
         })
         console.log(data); 
 
@@ -50,11 +51,16 @@ const Checkout = () => {
         height: '700px',
         backgroundSize: '100% 100%',
     }
+    const [isOpen,setIsOpen] = useState(false);
+    const toggle = ()=>{
+        setIsOpen(!isOpen)
+    }
 
     return (
         <section>
             <div style={background}>
-                <Navbar/>
+            <MenuButton isOpen={isOpen} toggle={toggle}></MenuButton>
+            <Navbar toggle={toggle}/>
             </div>
             <div className='row mt-5'>
                 <h1 className='text-center'>Confirm Here</h1>

@@ -19,7 +19,6 @@ const Navbar = ({toggle}) => {
                 <NavLink to='/about'>About</NavLink>
                 <NavLink to='/destination'>Destinations</NavLink>
                 <NavLink to='/tours'>Tours</NavLink>
-                <NavLink to='/blog'>Blog</NavLink>
                 <NavLink to='/dashBoard'>DashBoard</NavLink>
                 
             </NavMenu>

@@ -16,8 +16,7 @@ const MenuButton = ({ toggle, isOpen }) => {
                     <SidebarLink to='about'>About</SidebarLink>
                     <SidebarLink to='destination'>Destinations</SidebarLink>
                     <SidebarLink to='tours'>Tours</SidebarLink>
-                    <SidebarLink to='blog'>Blog</SidebarLink>
-                    <SidebarLink to='admin'>Admin</SidebarLink>
+                    <SidebarLink to='dashboard'>Dashboard</SidebarLink>
                 </SidebarMenu>
                 <SidebarBtn>
                     <SidebarLink><Button>Login</Button></SidebarLink>

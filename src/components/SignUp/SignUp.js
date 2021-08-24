@@ -12,6 +12,7 @@ import "firebase/auth";
 import { useContext } from 'react';
 import { UserContext } from '../../App';
 import firebaseConfig from './firebase.config';
+import MenuButton from '../Home/Header/MenuButton/MenuButton';
 
 const SignUp = () => {
     const [newUser, setNewUser] = useState()
@@ -33,8 +34,8 @@ const SignUp = () => {
         firebase.auth().signInWithPopup(provider)
             .then(function (result) {
                 console.log(result)
-                const { displayName, email,photoURL } = result.user;
-                const signedInUser = { name: displayName, email,img:photoURL }
+                const { displayName, email, photoURL } = result.user;
+                const signedInUser = { name: displayName, email, img: photoURL }
                 setLoggedInUser(signedInUser);
                 storeAuthToken();
             }).catch(function (error) {
@@ -52,10 +53,15 @@ const SignUp = () => {
                 // Handle error
             });
     }
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => {
+        setIsOpen(!isOpen)
+    }
     return (
         <section>
             <div className='signUp-bg'>
-                <Navbar />
+                <MenuButton isOpen={isOpen} toggle={toggle}></MenuButton>
+                <Navbar toggle={toggle} />
                 <div className='my-5'>
                     <div className='signUp mx-5  shadow-lg mt-5'>
                         <div className='container border bg-white col-md-4'>
