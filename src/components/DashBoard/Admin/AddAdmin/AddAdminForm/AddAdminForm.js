@@ -14,7 +14,7 @@ const AddAdminForm = () => {
             adminPhone:data.phone,
             adminAddress:data.address
         };
-        fetch('http://localhost:5000/addAdmin', {
+        fetch('https://nameless-shelf-72210.herokuapp.com/addAdmin', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

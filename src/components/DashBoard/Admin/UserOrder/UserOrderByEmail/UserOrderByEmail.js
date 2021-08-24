@@ -12,7 +12,7 @@ const UserOrderByEmail = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/userOrder', {
+        fetch('https://nameless-shelf-72210.herokuapp.com/userOrder', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email: loggedInUser.email })

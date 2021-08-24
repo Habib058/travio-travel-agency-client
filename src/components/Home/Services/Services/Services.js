@@ -4,40 +4,11 @@ import sundarban1 from '../../../../assets/images/alone.jpeg';
 import ServiceList from '../ServiceList/ServiceList';
 import { useState } from 'react';
 import { useEffect } from 'react';
-export const servicesData = [
-    {
-        id:'1',
-        heading: 'Sundarban Tour',
-        price: '2000',
-        days: '3',
-        img: sundarban,
-        location: 'koromjol',
-        pera: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo!'
-    },
-    {
-        id:'2',
-        heading: 'Sundarban Tour',
-        price: '2000',
-        days: '3',
-        img: sundarban1,
-        location: 'koromjol',
-        pera: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo!'
-    },
-    {
-        id:'3',
-        heading: 'Sundarban Tour',
-        price: '2000',
-        days: '3',
-        img: sundarban,
-        location: 'koromjol',
-        pera: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo!'
-    },
-]
 
 const Services = () => {
     const [tours,setTours] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/tours')
+        fetch('https://nameless-shelf-72210.herokuapp.com/tours')
         .then(res=>res.json())
         .then(data=>setTours(data))
     },[])

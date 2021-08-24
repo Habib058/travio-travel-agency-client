@@ -17,7 +17,7 @@ const Checkout = () => {
     const [tours, setTours] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tour/${id}`)
+        fetch(`https://nameless-shelf-72210.herokuapp.com/tour/${id}`)
             .then(res => res.json())
             .then(data => setTours(data))
     }, [id]);
@@ -29,7 +29,7 @@ const Checkout = () => {
         data.price = tours.price;
         data.location = tours.location;
         data.createOrder = new Date();
-        fetch('http://localhost:5000/placeOrder',{
+        fetch('https://nameless-shelf-72210.herokuapp.com/placeOrder',{
             method:'POST',
             headers:{'content-type':'application/json'},
             body:JSON.stringify(data)

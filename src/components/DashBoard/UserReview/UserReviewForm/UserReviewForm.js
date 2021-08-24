@@ -16,7 +16,7 @@ const UserReviewForm = () => {
             userName:loggedInUser.name,
             userImg:loggedInUser.img
         }
-        fetch('http://localhost:5000/addReview', {
+        fetch('https://nameless-shelf-72210.herokuapp.com/addReview', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

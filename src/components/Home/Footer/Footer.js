@@ -16,7 +16,7 @@ const Footer = () => {
             {name: "Yards" , link: "//google.com/map"},
            
         ]
-        const oralHealth = [
+        const Tours = [
             {name: "Travio" , link: "/"},
             {name: "Destination" , link: "/destination"},
             {name: "About" , link: "/about"},
@@ -36,7 +36,7 @@ const Footer = () => {
                     <div className="row py-5">
                         <FooterCol key={1} menuTitle={"."} menuItems={noNamed}/>
                         <FooterCol key={2} menuTitle="Services" menuItems={services}/>
-                        <FooterCol key={3} menuTitle="Oral Health" menuItems={oralHealth}/>
+                        <FooterCol key={3} menuTitle="Tours" menuItems={Tours}/>
                         <FooterCol key={4} menuTitle="Our Address" menuItems={ourAddress}> 
                             <ul className="social-media list-inline">
                                 

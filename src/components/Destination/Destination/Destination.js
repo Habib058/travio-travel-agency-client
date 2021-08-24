@@ -19,7 +19,7 @@ const Destination = () => {
     }
 
     useEffect(()=>{
-        fetch('http://localhost:5000/tours')
+        fetch('https://nameless-shelf-72210.herokuapp.com/tours')
         .then(res=>res.json())
         .then(data=>setTours(data))
     },[])

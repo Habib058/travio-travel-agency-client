@@ -7,7 +7,7 @@ import './OrdersContent.css'
 const OrdersContent = () => {
     const [orders,setOrders] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/orders')
+        fetch('https://nameless-shelf-72210.herokuapp.com/orders')
         .then(res=>res.json())
         .then(data=>setOrders(data))
     },[])

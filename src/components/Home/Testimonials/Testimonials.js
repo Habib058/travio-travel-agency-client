@@ -6,31 +6,11 @@ import z from '../../../assets/images/Ellipse 3.png'
 import Testimonial from '../Testimonial/Testimonial';
 import { useState } from 'react';
 import { useEffect } from 'react';
-const testimonialData = [
-    {
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo! ',
-        name: 'Wilson Harry',
-        from: 'California',
-        img: x
-    },
-    {
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo! ',
-        name: 'Ema Gomez',
-        from: 'California',
-        img: y
-    },
-    {
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic non architecto nobis, adipisci recusandae repellat accusantium consequuntur, qui nisi deserunt blanditiis mollitia, illo! ',
-        name: 'Aliza Farari',
-        from: 'California',
-        img: z
-    }
-]
 
 const Testimonials = () => {
     const [review,setReview] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/review')
+        fetch('https://nameless-shelf-72210.herokuapp.com/review')
         .then(res=>res.json())
         .then(data=>setReview(data))
     },[])

@@ -19,7 +19,7 @@ const AddTourForm = () => {
             description: data.description,
             imgUrl: tourImg
         };
-        const url = 'http://localhost:5000/addTour';
+        const url = 'https://nameless-shelf-72210.herokuapp.com/addTour';
         fetch(url, {
             method: 'POST',
             headers: {
