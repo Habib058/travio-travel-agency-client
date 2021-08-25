@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineStyle, GroupAdd, FlightTakeoff, Group,ShoppingCart } from '@material-ui/icons';
+import { LineStyle, GroupAdd, FlightTakeoff, Group,ShoppingCart,Settings } from '@material-ui/icons';
 import './SideBar.css'
 import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
@@ -56,6 +56,13 @@ const Sidebar = () => {
                                 Add Tours
                             </li>
                         </Link>
+                        <Link to='/manageTours' className='link'>
+                            <li className="sideBarListItem">
+                                <Settings className='sideBarIcon' />
+                                Manage Tours
+                            </li>
+                        </Link>
+
                         <Link className='link' to='/users'>
                             <li className="sideBarListItem">
                                 <Group className='sideBarIcon' />
