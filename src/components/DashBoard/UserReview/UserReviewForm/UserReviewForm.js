@@ -26,7 +26,7 @@ const UserReviewForm = () => {
             .then(res => res.json())
             .then(result=>{
                 alert('Review Given Successfully');
-                history.replace("/addReview")
+                history.replace("/dashboard")
             })
 
     }

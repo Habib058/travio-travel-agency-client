@@ -30,7 +30,7 @@ const AddTourForm = () => {
             .then(res => res.json())
             .then(result=>{
                 alert('Tour Added Successfully');
-                history.replace("/addTour")
+                history.replace("/admin")
             })
     }
 

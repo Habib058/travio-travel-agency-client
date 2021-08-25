@@ -24,7 +24,7 @@ const AddAdminForm = () => {
             .then(res => res.json())
             .then(result=>{
                 alert('Admin Added Successfully');
-                history.replace("/addAdmin")
+                history.replace("/admin")
             })
 
     };
